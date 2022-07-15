@@ -1,10 +1,24 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class TFD {
     public static void main(String[] args) {
-        int numberInput = 0;
+        ArrayList<String> input = new ArrayList<String>();
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Input: ");
+        String numberInput = scan.nextLine();
         try {
-            numberInput = Integer.parseInt(args[0]);
-            for(int i = 1; i <= numberInput; i++) {
-                System.out.println("Case #" + i + ": " + getFirstAlphabeString(args[i]));
+            int numberIP = Integer.parseInt(numberInput);
+            for (int i = 0; i < numberIP; i++) {
+                String line = scan.nextLine();
+                input.add(line);
+            }
+            System.out.println("Output: ");
+            //int numberInput = 0;
+            int i = 1;
+            for( String line: input) {
+                System.out.println("Case #" + i + ": " + getFirstAlphabeString(line));
+                i++;
             }
         } catch (Exception ex) {
             System.out.println("Input error");
@@ -13,13 +27,13 @@ public class TFD {
     }
 
     private static String getFirstAlphabeString(String input) {
-        StringBuilder output = new StringBuilder();
+        String output = "";
         int len = input.length();
         for (int i = 0; i < len; i++) {
-            output.append(input.charAt(i));
+            output = output + input.charAt(i);
             if (i < len - 1) {
                 if (input.charAt(i) < input.charAt(i+1)) {
-                    output.append(input.charAt(i));
+                    output = output + input.charAt(i);
                 } else if(input.charAt(i) < input.charAt(i+1)) {
                     boolean isDouble = false;
                     for (int j = 0; j < len; j++) {
@@ -31,12 +45,12 @@ public class TFD {
                         }
                     }
                     if (isDouble) {
-                        output.append(input.charAt(i));
+                        output = output + input.charAt(i);
                     }
                 }
             }
         }
-        return output.toString();
+        return output;
     }
 }
 
