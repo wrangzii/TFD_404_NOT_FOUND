@@ -34,7 +34,7 @@ public class TFD {
             if (i < len - 1) {
                 if (input.charAt(i) < input.charAt(i+1)) {
                     output = output + input.charAt(i);
-                } else if(input.charAt(i) < input.charAt(i+1)) {
+                } else if(input.charAt(i) == input.charAt(i+1)) {
                     boolean isDouble = false;
                     for (int j = 0; j < len; j++) {
                         if (input.charAt(i) != input.charAt(j)) {
